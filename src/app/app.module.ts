@@ -3,9 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +23,13 @@ import { TodoService } from './services/todo.service';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DetailsComponent } from './components/details/details.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
-
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import {MatPaginatorIntlCro} from './translate/customClass'
 
 @NgModule({
   declarations: [
@@ -25,7 +38,10 @@ import { DetailsComponent } from './components/details/details.component';
     DetailsComponent,
     HeaderComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent,
+    AboutComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +52,22 @@ import { DetailsComponent } from './components/details/details.component';
     MatIconModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    NgxMaskModule.forRoot(),
+    MatPaginatorModule
   ],
-  providers: [TodoService],
+
+
+  providers: [TodoService,    MatDatepickerModule,
+    MatNativeDateModule, MatPaginatorIntl,  MatPaginatorIntlCro,{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}],
+
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,38 +1,60 @@
 <div>
-    <form [formGroup] = "formToDo" (ngSubmit)="onSubmit(formToDo)" >
+  <form [formGroup]="formToDo" (ngSubmit)="onSubmit()">
 
-        <input type = "text" name = "responsible"
-        placeholder = "Responsável" formControlName = "responsible">
-        <br/>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Responsável</mat-label>
+      <input matInput type="text" name="responsible" placeholder="Responsável" formControlName="responsible" required>
+    </mat-form-field>
 
-        <input type = "text" name = "phone"
-        placeholder = "Telefone" formControlName = "phone">
-        <br/>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input matInput type="text" name="phone" placeholder="Telefone" formControlName="phone"
+        mask="(00) 00000-0000 || (00) 0000-0000" required>
+    </mat-form-field>
 
-        <input type = "text" name = "email"
-        placeholder = "E-mail" formControlName = "email">
-        <br/>
 
-        <input type = "text" name = "description"
-        placeholder = "Descrição" formControlName = "description">
-        <br/>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" name="email" placeholder="E-mail" formControlName="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+    </mat-form-field>
 
-        <input type = "text" name = "dateEnd"
-        placeholder = "Data de entrega" formControlName = "dateEnd">
-        <br/>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input matInput type="text" name="description" placeholder="Descrição" formControlName="description" required>
+    </mat-form-field>
 
-        <input type = "hour" name = "hourEnd"
-        placeholder = "Hora de entrega" formControlName = "hourEnd">
-        <br/>
-
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Data de entrega</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateEnd">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field> -->
-          <br/>
-          <button type="submit" [disabled] = "!formToDo.valid" >Submit</button>
-    </form>
-</div>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Hora de entrega</mat-label>
+            <input matInput type="time" name="hourEnd" placeholder="Hora de entrega" formControlName="hourEnd">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
+    <table>
+      <tr>
+        <td>
+          <button mat-raised-button routerLink='/list'>
+            Voltar
+          </button>
+        </td>
+        <td>
+          <button mat-raised-button type="submit" [disabled]="!formToDo.valid">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</div>

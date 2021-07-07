@@ -1,0 +1,12 @@
+.body {
+    min-height: calc(100vh - 70px);
+}
+
+.footer {
+    height: 50px;
+    color: rgb(78, 7, 78);
+    text-align: center;
+    background-color: rgb(253,78,134);
+    border-radius: 3px;
+    line-height:50px;
+}

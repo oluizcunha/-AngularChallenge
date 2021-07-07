@@ -1,1 +1,18 @@
-<p>header works!</p>
+<p>
+  <mat-toolbar class="header">
+    <span>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon style="color: white;">menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>About</button>
+        <button mat-menu-item>Contact us</button>
+      </mat-menu>
+    </span>
+    <a routerLink="/home" class="logo">
+      <img src="./assets/img/logo-header.png" class="logo">
+    </a>
+    <span class="example-spacer"></span>
+    <button mat-raised-button class="mat-button-base" routerLink="/list">Go to tasks!</button>
+  </mat-toolbar>
+</p>

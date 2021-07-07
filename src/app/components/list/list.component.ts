@@ -38,14 +38,13 @@ export class ListComponent implements OnInit {
     this.service.getToDos().subscribe(data => {
       this.dataSource.data = data;
     })
-
-
   }
 
-  deleteEmployee(id){
-
-    console.log("quero apagar " + id)
-
+  deleteToDo(id){
+    this.service.deleteToDo(id).subscribe(data => {
+      alert("Deletado!");
+      this.getToDos();
+    })
   }
 
 }

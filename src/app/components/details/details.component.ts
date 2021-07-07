@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DateAdapter } from '@angular/material/core';
 
 import { Todo } from 'src/app/model/todo';
 import { TodoService } from 'src/app/services/todo.service';
@@ -18,7 +19,10 @@ export class DetailsComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private service: TodoService,
     public actRoute: ActivatedRoute,
-    public router: Router) { }
+    public router: Router,
+    private dateAdapter: DateAdapter<Date>) {
+      this.dateAdapter.setLocale('en-GB');
+    }
 
   ngOnInit(): void {
     this.createForm();
@@ -50,17 +54,16 @@ export class DetailsComponent implements OnInit {
     })
   }
 
-  onSubmit(form) {
-    console.log(this.formToDo.value);
-    console.log(form);
-
+  onSubmit() {
     if(this.taskId){
-      console.log('tem id')
-      this.service.updateToDo(this.taskId, form.value).subscribe(data => {
+      this.service.updateToDo(this.taskId, this.formToDo.value).subscribe(data => {
+        this.router.navigate(['/list']);
+      })
+    } else {
+      this.service.createToDo(this.formToDo.value).subscribe(data => {
         this.router.navigate(['/list']);
       })
     }
-
   }
 
 }
