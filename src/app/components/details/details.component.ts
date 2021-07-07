@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Todo } from 'src/app/model/todo';
@@ -14,7 +14,6 @@ import { TodoService } from 'src/app/services/todo.service';
 export class DetailsComponent implements OnInit {
   taskId: number;
   formToDo: FormGroup;
-  toDoTemp;
 
   constructor(private fb: FormBuilder,
     private service: TodoService,
@@ -22,14 +21,12 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    const id = this.actRoute.snapshot.params['id'];
-    if(id) {
-      this.service.getToDo(id).subscribe(data => {
+    this.taskId = this.actRoute.snapshot.params['id'];
+    if(this.taskId) {
+      this.service.getToDo(this.taskId).subscribe(data => {
         this.loadForm(data);
       })
-
     }
-    console.log(this.formToDo)
   }
 
   loadForm(data) {
@@ -48,7 +45,19 @@ export class DetailsComponent implements OnInit {
       email: [null, [Validators.required]],
       description: [null, [Validators.required]],
       dateEnd: [null, [Validators.required]],
+      responsible: [null, [Validators.required]],
     })
+  }
+
+  onSubmit(form) {
+    console.log(form)
+    if(this.taskId) {
+      console.log('tem id')
+      this.service.updateToDo(this.taskId, form).subscribe(data => {
+        alert("Foi");
+      })
+    }
+
   }
 
 }
