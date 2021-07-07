@@ -16,8 +16,9 @@ export class TodoService {
   }
 
   // LISTA TODAS AS TASKS
-  getToDos():Observable<Todo>{
-    return this.http.get<Todo>(this.url+'todos').pipe(catchError(this.handleError))
+  //Retornando array
+  getToDos():Observable<Todo[]>{
+    return this.http.get<Todo[]>(this.url+'todos').pipe(catchError(this.handleError))
   }
 
   // TRAZ TASK POR ID
