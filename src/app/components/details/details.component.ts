@@ -17,7 +17,8 @@ export class DetailsComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private service: TodoService,
-    public actRoute: ActivatedRoute) { }
+    public actRoute: ActivatedRoute,
+    public router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -50,11 +51,13 @@ export class DetailsComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form)
-    if(this.taskId) {
+    console.log(this.formToDo.value);
+    console.log(form);
+
+    if(this.taskId){
       console.log('tem id')
-      this.service.updateToDo(this.taskId, form).subscribe(data => {
-        alert("Foi");
+      this.service.updateToDo(this.taskId, form.value).subscribe(data => {
+        this.router.navigate(['/list']);
       })
     }
 

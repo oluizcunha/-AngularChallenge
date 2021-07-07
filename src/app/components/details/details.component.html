@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup] = "formToDo" (ngSubmit) = "onSubmit(formToDo.value)" >
+    <form [formGroup] = "formToDo" (ngSubmit)="onSubmit(formToDo)" >
 
         <input type = "text" name = "responsible"
         placeholder = "Responsável" formControlName = "responsible">
@@ -32,10 +32,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field> -->
           <br/>
-        <button type = "submit" [disabled] = "!formToDo.valid"
-        value = "Enviar" routerLink='/list' >Aqui jas um botao </button>
-
-
+          <button type="submit" [disabled] = "!formToDo.valid" >Submit</button>
     </form>
 </div>
 
