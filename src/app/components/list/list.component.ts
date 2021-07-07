@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
     'hourEnd',
     'phone',
     'email',
-
+    'actions'
   ];
 
   ELEMENT_DATA!: Todo[];
@@ -39,6 +39,12 @@ export class ListComponent implements OnInit {
       this.dataSource.data = data;
     })
 
+
+  }
+
+  deleteEmployee(id){
+
+    console.log("quero apagar " + id)
 
   }
 

@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +15,7 @@ import { TodoService } from './services/todo.service';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DetailsComponent } from './components/details/details.component';
+
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { DetailsComponent } from './components/details/details.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    HttpClientModule
+    MatButtonModule,
+    MatIconModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [TodoService],
   bootstrap: [AppComponent],
