@@ -7,7 +7,8 @@
       "description": "Criar template Bradesco",
       "dateEnd": "2001-01-01T03:00:00.000Z",
       "responsible": "Emmanuel Lira",
-      "id": 1
+      "id": 1,
+      "status": "Em aberto"
     },
     {
       "hourEnd": "20:26",
@@ -16,7 +17,8 @@
       "description": "Limpar casa",
       "dateEnd": "2021-07-09T04:00:00.000Z",
       "responsible": "Luiz Cunha ATUALIZADO",
-      "id": 4
+      "id": 4,
+      "status": "Concluído"
     },
     {
       "hourEnd": "18:54",
@@ -25,6 +27,7 @@
       "description": "Realizar feira semanal",
       "dateEnd": "2021-07-23T03:00:00.000Z",
       "responsible": "Fulano",
+      "status": "Concluído",
       "id": 7
     },
     {
@@ -34,7 +37,8 @@
       "description": "Criar template Bradesco",
       "dateEnd": "2021-07-27T03:00:00.000Z",
       "responsible": "Fulano 2",
-      "id": 8
+      "id": 8,
+      "status": "Em aberto"
     },
     {
       "hourEnd": "20:14",
@@ -43,7 +47,8 @@
       "description": "Criar template Bradesco",
       "dateEnd": "2021-07-28T03:00:00.000Z",
       "responsible": "Luiz Cunha",
-      "id": 9
+      "id": 9,
+      "status": "Em aberto"
     },
     {
       "hourEnd": "15:24",
@@ -52,6 +57,7 @@
       "description": "Criar template Bradesco",
       "dateEnd": "2034-01-01T03:00:00.000Z",
       "responsible": "Beatriz Bianca",
+      "status": "Concluído",
       "id": 10
     },
     {
@@ -61,7 +67,18 @@
       "description": "Criar template Santander",
       "dateEnd": "2021-09-07T03:00:00.000Z",
       "responsible": "Emmanuel Lira",
-      "id": 11
+      "id": 11,
+      "status": "Concluído"
+    },
+    {
+      "hourEnd": "11:50",
+      "phone": "6598085137",
+      "email": "11@gmail.com",
+      "description": "1",
+      "dateEnd": "2021-07-08T13:50:19.689Z",
+      "responsible": "1",
+      "id": 12,
+      "status": "Concluído"
     }
   ]
 }

@@ -1,27 +1,45 @@
 <div class="form">
   <form [formGroup]="formToDo" (ngSubmit)="onSubmit()">
-
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Responsável</mat-label>
-      <input matInput type="text" name="responsible" formControlName="responsible">
+      <input
+        matInput
+        type="text"
+        name="responsible"
+        formControlName="responsible"
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Telefone</mat-label>
-      <input matInput type="text" name="phone" formControlName="phone"
-        mask="(00) 00000-0000 || (00) 0000-0000">
+      <input
+        matInput
+        type="text"
+        name="phone"
+        formControlName="phone"
+        mask="(00) 00000-0000 || (00) 0000-0000"
+      />
     </mat-form-field>
-
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>E-mail</mat-label>
-      <input matInput type="email" name="email" formControlName="email"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <input
+        matInput
+        type="email"
+        name="email"
+        formControlName="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Descrição</mat-label>
-      <input matInput type="text" name="description" formControlName="description">
+      <input
+        matInput
+        type="text"
+        name="description"
+        formControlName="description"
+      />
     </mat-form-field>
 
     <table class="example-full-width" cellspacing="0">
@@ -29,37 +47,91 @@
         <td class="pr">
           <mat-form-field class="example-full-width-dh" appearance="outline">
             <mat-label>Data de entrega</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dateEnd">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="dateEnd"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </td>
+        <td class="pr">
+          <mat-form-field class="example-full-width-dh" appearance="outline">
+            <mat-label>Hora de entrega</mat-label>
+            <input
+              matInput
+              type="time"
+              name="hourEnd"
+              placeholder="Hora de entrega"
+              formControlName="hourEnd"
+            />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="example-full-width-dh" appearance="outline">
-            <mat-label>Hora de entrega</mat-label>
-            <input matInput type="time" name="hourEnd" placeholder="Hora de entrega" formControlName="hourEnd">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" required>
+              <mat-option *ngFor="let st of status" [value]="st">
+                {{ st }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </td>
       </tr>
     </table>
 
+    <!--  -->
+    <!-- Tentativa de fazer data em um só componente -->
+    <!--           [value]="formToDo.get('dateEnd').value | date: 'yyyy-MM-ddTHH:mm'" -->
+    <!-- <table class="example-full-width" cellspacing="0">
+      <mat-form-field class="example-full-width-dh" appearance="outline">
+        <mat-label>Data de entrega</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          type="datetime-local"
+          formControlName="dateEnd"
+        />
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </table> -->
+
     <table>
       <tr>
         <td class="pr">
-          <button mat-raised-button routerLink='/list' class="button">
+          <button mat-raised-button routerLink="/list" class="button">
             Voltar
           </button>
         </td>
         <td *ngIf="taskId; else blocoCriar">
-          <button mat-raised-button type="submit" [disabled]="!formToDo.valid || formToDo.untouched" class="button submit" (click)="openDialog('editado')">Editar</button>
+          <button
+            mat-raised-button
+            type="submit"
+            [disabled]="!formToDo.valid || formToDo.untouched"
+            class="button submit"
+            (click)="openDialog('editado')"
+          >
+            Editar
+          </button>
         </td>
         <ng-template #blocoCriar>
           <td>
-            <button mat-raised-button type="submit" [disabled]="!formToDo.valid" class="button submit" (click)="openDialog('adicionado')">Adicionar</button>
+            <button
+              mat-raised-button
+              type="submit"
+              [disabled]="!formToDo.valid"
+              class="button submit"
+              (click)="openDialog('adicionado')"
+            >
+              Adicionar
+            </button>
           </td>
         </ng-template>
       </tr>
     </table>
   </form>
-
 </div>

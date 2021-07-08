@@ -1,66 +1,192 @@
-<button mat-raised-button routerLink='/details/create' class="add-button">
+<button mat-raised-button routerLink="/details/create" class="add-button">
   Adicionar atividade<mat-icon>add</mat-icon>
 </button>
 
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenToDo = true"
+    (closed)="panelOpenToDo = false"
+    class="sanfonaToDo"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Em aberto </mat-panel-title>
+    </mat-expansion-panel-header>
+    <table
+      mat-table
+      [dataSource]="dataSourceToDo"
+      matSort
+      class="mat-elevation-z8"
+    >
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
 
-  <!-- Description Column -->
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> Descrição </th>
-    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-  </ng-container>
+      <!-- Responsible Column -->
+      <ng-container matColumnDef="responsible">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Responsável</th>
+        <td mat-cell *matCellDef="let element">{{ element.responsible }}</td>
+      </ng-container>
 
-  <!-- Responsible Column -->
-  <ng-container matColumnDef="responsible">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Responsável </th>
-    <td mat-cell *matCellDef="let element"> {{element.responsible}} </td>
-  </ng-container>
+      <!-- DataEnd Column -->
+      <ng-container matColumnDef="dataEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="date">
+          Data de Entrega
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateEnd | date: "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
 
-  <!-- DataEnd Column -->
-  <ng-container matColumnDef="dataEnd">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Entrega </th>
-    <td mat-cell *matCellDef="let element"> {{element.dateEnd | date:'dd/MM/yyyy' }} </td>
-  </ng-container>
+      <!-- HourEnd Column -->
+      <ng-container matColumnDef="hourEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Hora de entrega
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.hourEnd }}</td>
+      </ng-container>
 
-  <!-- HourEnd Column -->
-  <ng-container matColumnDef="hourEnd">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora de entrega </th>
-    <td mat-cell *matCellDef="let element"> {{element.hourEnd}} </td>
-  </ng-container>
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      </ng-container>
 
-  <!-- Phone Column -->
-  <ng-container matColumnDef="phone">
-    <th mat-header-cell *matHeaderCellDef> Telefone </th>
-    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-  </ng-container>
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
 
-  <!-- Email Column -->
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> E-mail </th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  </ng-container>
+      <!-- Botão de editar e remover-->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element" class="td-button">
+          <div>
+            <button
+              mat-mini-fab
+              color=""
+              routerLink="/details/{{ element.id }}"
+              class="edit-button"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-mini-fab
+              color=""
+              (click)="openDialog(element.id)"
+              class="delete-button"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
 
-  <!-- Botão de editar e remover-->
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Ações </th>
-    <td mat-cell *matCellDef="let element" class="td-button">
-      <div>
-        <button mat-mini-fab color="" routerLink='/details/{{ element.id }}' class="edit-button">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-mini-fab color="" (click)="openDialog(element.id)" class="delete-button">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
 
-    </td>
-  </ng-container>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+      class="paginator"
+    >
+    </mat-paginator>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenDone = true"
+    (closed)="panelOpenDone = false"
+    class="sanfonaToDo"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Concluído </mat-panel-title>
+    </mat-expansion-panel-header>
+    <table
+      mat-table
+      [dataSource]="dataSourceDone"
+      matSort
+      class="mat-elevation-z8"
+    >
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- Responsible Column -->
+      <ng-container matColumnDef="responsible">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Responsável</th>
+        <td mat-cell *matCellDef="let element">{{ element.responsible }}</td>
+      </ng-container>
 
-</table>
+      <!-- DataEnd Column -->
+      <ng-container matColumnDef="dataEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Data de Entrega
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateEnd | date: "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
 
+      <!-- HourEnd Column -->
+      <ng-container matColumnDef="hourEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Hora de entrega
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.hourEnd }}</td>
+      </ng-container>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons class="paginator">
-</mat-paginator>
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- Botão de editar e remover-->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element" class="td-button">
+          <div>
+            <button
+              mat-mini-fab
+              color=""
+              routerLink="/details/{{ element.id }}"
+              class="edit-button"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-mini-fab
+              color=""
+              (click)="openDialog(element.id)"
+              class="delete-button"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+      class="paginator"
+    >
+    </mat-paginator>
+  </mat-expansion-panel>
+</mat-accordion>

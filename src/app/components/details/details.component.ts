@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateAdapter } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Todo } from 'src/app/model/todo';
 import { TodoService } from 'src/app/services/todo.service';
 import { ConfirmModalComponent } from 'src/app/components/details/confirm-modal/confirm-modal.component';
-
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
   taskId: number;
   formToDo: FormGroup;
+  status = ['Em aberto', 'Concluído'];
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private service: TodoService,
     public actRoute: ActivatedRoute,
     public router: Router,
     private dateAdapter: DateAdapter<Date>,
-    public dialog: MatDialog) {
-      this.dateAdapter.setLocale('en-GB');
-    }
+    public dialog: MatDialog
+  ) {
+    this.dateAdapter.setLocale('en-GB');
+  }
 
   ngOnInit(): void {
     this.createForm();
     this.taskId = this.actRoute.snapshot.params['id'];
-    if(this.taskId) {
-      this.service.getToDo(this.taskId).subscribe(data => {
+    if (this.taskId) {
+      this.service.getToDo(this.taskId).subscribe((data) => {
         this.loadForm(data);
-      })
+      });
     }
   }
 
@@ -44,6 +50,7 @@ export class DetailsComponent implements OnInit {
     this.formToDo.get('description')?.setValue(data.description);
     this.formToDo.get('dateEnd')?.setValue(data.dateEnd);
     this.formToDo.get('hourEnd')?.setValue(data.hourEnd);
+    this.formToDo.get('status')?.setValue(data.status);
   }
 
   createForm() {
@@ -54,26 +61,30 @@ export class DetailsComponent implements OnInit {
       description: [null, [Validators.required]],
       dateEnd: [null, [Validators.required]],
       responsible: [null, [Validators.required]],
-    })
+      status: [null, [Validators.required]],
+    });
   }
 
   onSubmit() {
-    if(this.taskId){
-      this.service.updateToDo(this.taskId, this.formToDo.value).subscribe(data => {
-        this.router.navigate(['/list']);
-      })
+    if (this.taskId) {
+      this.service
+        .updateToDo(this.taskId, this.formToDo.value)
+        .subscribe((data) => {
+          this.router.navigate(['/list']);
+          this.formToDo.value;
+        });
     } else {
-      this.service.createToDo(this.formToDo.value).subscribe(data => {
+      this.service.createToDo(this.formToDo.value).subscribe((data) => {
         this.router.navigate(['/list']);
-      })
+        console.log(this.formToDo.value);
+      });
     }
   }
 
   openDialog(type): void {
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       width: '250px',
-      data: { type: type }
+      data: { type: type },
     });
   }
-
 }

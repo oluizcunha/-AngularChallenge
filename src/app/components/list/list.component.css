@@ -1,21 +1,30 @@
+.sanfonaToDo {
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  max-width: 95%;
+  width: 100%;
+  margin: 2em auto;
+}
+
 table {
-    max-width: 95%;
-    width: 100%;
-    margin: 2em auto;
+  max-width: 100%;
+  width: 100%;
+  box-shadow: 0px 0px 0px 0px !important;
 }
 
 .mat-cell {
-    padding: 8px 8px 8px 0;
-  }
+  padding: 8px 8px 8px 0;
+}
 
-mat-header-cell, mat-cell {
-    justify-content: center;
-  }
+mat-header-cell,
+mat-cell {
+  justify-content: center;
+}
 
-  mat-paginator {
-    max-width: 75%;
-    width: 100%;
-    margin: 2em auto;
+mat-paginator {
+  max-width: 75%;
+  width: 100%;
+  margin: 2em auto;
 }
 
 .add-button {
@@ -29,7 +38,7 @@ mat-header-cell, mat-cell {
 }
 
 .add-button:hover {
-  background-color: rgb(255,223,228);
+  background-color: rgb(255, 223, 228);
   font-weight: bold;
 }
 
@@ -50,6 +59,6 @@ mat-header-cell, mat-cell {
 }
 
 .paginator {
-  margin-top: 0px;;
+  margin-top: 0px;
   margin-right: 1%;
 }

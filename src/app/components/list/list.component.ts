@@ -10,9 +10,11 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
+  panelOpenToDo = false;
+  panelOpenDone = false;
 
   displayedColumns: string[] = [
     'description',
@@ -21,45 +23,52 @@ export class ListComponent implements OnInit {
     'hourEnd',
     'phone',
     'email',
-    'actions'
+    'actions',
   ];
 
   ELEMENT_DATA!: Todo[];
 
-  dataSource = new MatTableDataSource<Todo>(this.ELEMENT_DATA);
+  dataSourceToDo = new MatTableDataSource<Todo>(this.ELEMENT_DATA);
+  dataSourceDone = new MatTableDataSource<Todo>(this.ELEMENT_DATA);
 
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: true })
+  paginatorToDo!: MatPaginator;
+  paginatorDone!: MatPaginator;
+  @ViewChild(MatSort, { static: true })
+  sortToDo!: MatSort;
+  sortDone!: MatSort;
 
-  constructor(private service: TodoService, public dialog: MatDialog) { }
+  constructor(private service: TodoService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getToDos();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.dataSourceToDo.paginator = this.paginatorToDo;
+    this.dataSourceToDo.sort = this.sortToDo;
+    this.dataSourceDone.paginator = this.paginatorDone;
+    this.dataSourceDone.sort = this.sortDone;
   }
 
   getToDos() {
-    this.service.getToDos().subscribe(data => {
-      this.dataSource.data = data;
-    })
+    this.service.getToDos().subscribe((data) => {
+      this.dataSourceToDo.data = data.filter((x) => x.status == 'Em aberto');
+      this.dataSourceDone.data = data.filter((x) => x.status == 'Concluído');
+    });
   }
 
-  deleteToDo(id){
-    this.service.deleteToDo(id).subscribe(data => {
+  deleteToDo(id) {
+    this.service.deleteToDo(id).subscribe((data) => {
       this.getToDos();
-    })
+    });
   }
 
   openDialog(id) {
     const dialogRef = this.dialog.open(DeleteModalComponent, {
-      width: '250px'
+      width: '250px',
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.deleteToDo(id);
       }
     });
   }
-
 }

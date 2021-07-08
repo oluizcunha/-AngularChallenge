@@ -15,6 +15,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MatSortModule } from '@angular/material/sort';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +50,7 @@ import { ConfirmModalComponent } from './components/details/confirm-modal/confir
     AboutComponent,
     ContactUsComponent,
     DeleteModalComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,14 +72,22 @@ import { ConfirmModalComponent } from './components/details/confirm-modal/confir
     NgxMaskModule.forRoot(),
     MatPaginatorModule,
     MatDialogModule,
-    MatSortModule
+    MatSortModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatSelectModule,
   ],
 
-
-  providers: [TodoService,    MatDatepickerModule,
-    MatNativeDateModule, MatPaginatorIntl,  MatPaginatorIntlCro,{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}],
+  providers: [
+    TodoService,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatPaginatorIntl,
+    MatPaginatorIntlCro,
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
+  ],
 
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
