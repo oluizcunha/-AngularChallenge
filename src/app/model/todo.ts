@@ -6,7 +6,7 @@ export class Todo {
     public email: string,
     public description: string,
     public dateEnd: string,
-    public hourEnd: string,
+    public dateConclusion: string,
     public status: string
   ) {}
 }

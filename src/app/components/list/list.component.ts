@@ -22,11 +22,20 @@ export class ListComponent implements OnInit {
   panelOpenToDo = false;
   panelOpenDone = false;
 
-  displayedColumns: string[] = [
+  displayedColumnsToDo: string[] = [
     'description',
     'responsible',
     'dataEnd',
-    'hourEnd',
+    'phone',
+    'email',
+    'actions',
+  ];
+
+  displayedColumnsDone: string[] = [
+    'description',
+    'responsible',
+    'dataEnd',
+    'dateConclusion',
     'phone',
     'email',
     'actions',
@@ -37,22 +46,26 @@ export class ListComponent implements OnInit {
   dataSourceToDo = new MatTableDataSource<Todo>(this.ELEMENT_DATA);
   dataSourceDone = new MatTableDataSource<Todo>(this.ELEMENT_DATA);
 
-  @ViewChild(MatPaginator, { static: true })
-  paginatorToDo!: MatPaginator;
-  @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+  @ViewChildren(MatPaginator)
+  paginator = new QueryList<MatPaginator>();
 
-  paginatorDone!: MatPaginator;
-  @ViewChild(MatSort, { static: true })
-  sortToDo!: MatSort;
-  sortDone!: MatSort;
+  @ViewChildren(MatSort) sort = new QueryList<MatSort>();
+
+  // Apagar se tudo funcionar
+  // @ViewChild(MatSort, { static: true })
+  // @ViewChild(MatPaginator, { static: true })
+  // sortToDo!: MatSort;
+  // sortDone!: MatSort;
+  // paginatorToDo!: MatPaginator;
+  // paginatorDone!: MatPaginator;
 
   constructor(private service: TodoService, public dialog: MatDialog) {}
 
   ngAfterViewInit(): void {
     this.dataSourceToDo.paginator = this.paginator.toArray()[0];
-    this.dataSourceToDo.sort = this.sortToDo;
+    this.dataSourceToDo.sort = this.sort.toArray()[0];
     this.dataSourceDone.paginator = this.paginator.toArray()[1];
-    this.dataSourceDone.sort = this.sortDone;
+    this.dataSourceDone.sort = this.sort.toArray()[1];
   }
 
   ngOnInit(): void {

@@ -1,64 +1,14 @@
 {
   "todos": [
     {
-      "hourEnd": "20:26",
+      "dateConclusion": null,
       "phone": "65984526656",
       "email": "luizotcunha@gmail.com",
-      "description": "Limpar casa",
-      "dateEnd": "2021-07-09T04:00:00.000Z",
-      "responsible": "Luiz Cunha ATUALIZADO",
-      "id": 4,
-      "status": "Concluído"
-    },
-    {
-      "hourEnd": "18:54",
-      "phone": "83994876178",
-      "email": "fulano@outlook.com",
-      "description": "Realizar feira semanal",
-      "dateEnd": "2021-07-23T03:00:00.000Z",
-      "responsible": "Fulano",
-      "status": "Concluído",
-      "id": 7
-    },
-    {
-      "hourEnd": "15:24",
-      "phone": "65984526656",
-      "email": "luizotcunha@gmail.com",
-      "description": "Criar template Bradesco",
-      "dateEnd": "2034-01-01T03:00:00.000Z",
-      "responsible": "Beatriz Bianca",
-      "status": "Concluído",
-      "id": 10
-    },
-    {
-      "hourEnd": "15:45",
-      "phone": "65984526656",
-      "email": "emmanuel.lira@capgemini.com",
-      "description": "Criar template Santander",
-      "dateEnd": "2021-09-07T03:00:00.000Z",
-      "responsible": "Emmanuel Lira",
-      "id": 11,
-      "status": "Concluído"
-    },
-    {
-      "hourEnd": "11:07",
-      "phone": "6598085137",
-      "email": "11@gmail.com",
-      "description": "1",
+      "description": "123",
       "dateEnd": "2021-07-08T04:00:00.000Z",
-      "responsible": "1",
-      "status": "Concluído",
-      "id": 12
-    },
-    {
-      "hourEnd": "17:07",
-      "phone": "65984526656",
-      "email": "luizotcunha@gmail.com",
-      "description": "desc t2",
-      "dateEnd": "2021-07-24T03:00:00.000Z",
-      "responsible": "Luiz Cunha ATUALIZADO",
-      "status": "Concluído",
-      "id": 13
+      "responsible": "123",
+      "status": "Em aberto",
+      "id": 1
     }
   ]
 }

@@ -49,13 +49,13 @@ export class DetailsComponent implements OnInit {
     this.formToDo.get('email')?.setValue(data.email);
     this.formToDo.get('description')?.setValue(data.description);
     this.formToDo.get('dateEnd')?.setValue(data.dateEnd);
-    this.formToDo.get('hourEnd')?.setValue(data.hourEnd);
+    this.formToDo.get('dateConclusion')?.setValue(data.dateConclusion);
     this.formToDo.get('status')?.setValue(data.status);
   }
 
   createForm() {
     this.formToDo = this.fb.group({
-      hourEnd: [null, [Validators.required]],
+      dateConclusion: [null],
       phone: [null, [Validators.required]],
       email: [null, [Validators.required]],
       description: [null, [Validators.required]],
