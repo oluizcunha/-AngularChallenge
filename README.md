@@ -32,6 +32,7 @@ O projeto foi desenvolvido utilizando as bases:
 - contact-us
 - list
 - details/create
+- 404: Not Found
 
 ## 🚀 Instalando <nome_do_projeto>
 
@@ -53,6 +54,10 @@ npm start
 
 
 ## 🤝 Colaboradores
+
+- Luiz Cunha
+- Beatriz Vasconcelos
+- Emmanuel 
 
 
 [⬆ Voltar ao topo](#nome-do-projeto)<br>

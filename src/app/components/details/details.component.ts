@@ -76,7 +76,6 @@ export class DetailsComponent implements OnInit {
     } else {
       this.service.createToDo(this.formToDo.value).subscribe((data) => {
         this.router.navigate(['/list']);
-        console.log(this.formToDo.value);
       });
     }
   }
