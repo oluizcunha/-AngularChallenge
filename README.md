@@ -1,4 +1,4 @@
-# Nome do projeto
+# easyTask
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
@@ -18,44 +18,41 @@ O projeto foi desenvolvido utilizando as bases:
 - VScode
 - GitHub
 - GitHub Projects (Kanban)
-- LiveShera - Para compartilhamento de conhecimentos
+- LiveShare - Para compartilhamento de conhecimentos
+- Json-Server (Para realizar um mock de API)
+- Angular
 - Css 3
 - Angular Material
+- 
 
-## 💻 Pré-requisitos
+## 💻 Paginas criadas
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
-* Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-* Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-* Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+- Home
+- about
+- contact-us
+- list
+- details/create
 
 ## 🚀 Instalando <nome_do_projeto>
 
 Para instalar o <nome_do_projeto>, siga estas etapas:
 
-Linux e macOS:
+Instalar:
 ```
-<comando_de_instalação>
+npm install
 ```
 
-Windows:
+Executar:
 ```
-<comando_de_instalação>
+npx json-server server\db.json 
+```
+```
+npm start
 ```
 
 
 
 ## 🤝 Colaboradores
 
-
-
-## 😄 Seja um dos contribuidores<br>
-
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
-
-## 📝 Licença
-
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
 
 [⬆ Voltar ao topo](#nome-do-projeto)<br>
