@@ -13,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule } from '@angular/material/core';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import {MatPaginatorIntlCro} from './translate/customClass'
+import { MatPaginatorIntlCro } from './translate/customClass';
+import { DeleteModalComponent } from './components/list/delete-modal/delete-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmModalComponent } from './components/details/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,9 @@ import {MatPaginatorIntlCro} from './translate/customClass'
     NotFoundComponent,
     FooterComponent,
     AboutComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    DeleteModalComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,9 @@ import {MatPaginatorIntlCro} from './translate/customClass'
     MatMenuModule,
     MatNativeDateModule,
     NgxMaskModule.forRoot(),
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    MatSortModule
   ],
 
 

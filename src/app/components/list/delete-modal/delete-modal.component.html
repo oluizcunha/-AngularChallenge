@@ -1,0 +1,12 @@
+<div class="body">
+    <mat-icon>report_problem</mat-icon>
+    <h3 mat-dialog-title>Você tem certeza que deseja apagar esse registro?</h3>
+
+    <div mat-dialog-actions>
+
+        <button mat-button [mat-dialog-close]="data" class="yes-button">Sim</button>
+
+        <button mat-button (click)="onNoClick()" class="no-button">Não</button>
+
+    </div>
+</div>

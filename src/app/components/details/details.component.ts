@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateAdapter } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Todo } from 'src/app/model/todo';
 import { TodoService } from 'src/app/services/todo.service';
+import { ConfirmModalComponent } from 'src/app/components/details/confirm-modal/confirm-modal.component';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class DetailsComponent implements OnInit {
     private service: TodoService,
     public actRoute: ActivatedRoute,
     public router: Router,
-    private dateAdapter: DateAdapter<Date>) {
+    private dateAdapter: DateAdapter<Date>,
+    public dialog: MatDialog) {
       this.dateAdapter.setLocale('en-GB');
     }
 
@@ -64,6 +67,13 @@ export class DetailsComponent implements OnInit {
         this.router.navigate(['/list']);
       })
     }
+  }
+
+  openDialog(type): void {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      width: '250px',
+      data: { type: type }
+    });
   }
 
 }

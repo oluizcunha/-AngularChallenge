@@ -1,5 +1,5 @@
 table {
-    max-width: 75%;
+    max-width: 95%;
     width: 100%;
     margin: 2em auto;
 }
@@ -20,7 +20,7 @@ mat-header-cell, mat-cell {
 
 .add-button {
   margin-top: 20px;
-  margin-left: 13%;
+  margin-left: 3%;
 }
 
 .edit-button {
@@ -47,4 +47,9 @@ mat-header-cell, mat-cell {
 
 .td-button {
   padding-right: 2px !important;
+}
+
+.paginator {
+  margin-top: 0px;;
+  margin-right: 1%;
 }

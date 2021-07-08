@@ -1,33 +1,33 @@
-<div>
+<div class="form">
   <form [formGroup]="formToDo" (ngSubmit)="onSubmit()">
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Responsável</mat-label>
-      <input matInput type="text" name="responsible" placeholder="Responsável" formControlName="responsible" required>
+      <input matInput type="text" name="responsible" formControlName="responsible">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Telefone</mat-label>
-      <input matInput type="text" name="phone" placeholder="Telefone" formControlName="phone"
-        mask="(00) 00000-0000 || (00) 0000-0000" required>
+      <input matInput type="text" name="phone" formControlName="phone"
+        mask="(00) 00000-0000 || (00) 0000-0000">
     </mat-form-field>
 
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>E-mail</mat-label>
-      <input matInput type="email" name="email" placeholder="E-mail" formControlName="email"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+      <input matInput type="email" name="email" formControlName="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Descrição</mat-label>
-      <input matInput type="text" name="description" placeholder="Descrição" formControlName="description" required>
+      <input matInput type="text" name="description" formControlName="description">
     </mat-form-field>
 
     <table class="example-full-width" cellspacing="0">
       <tr>
-        <td>
-          <mat-form-field class="example-full-width" appearance="outline">
+        <td class="pr">
+          <mat-form-field class="example-full-width-dh" appearance="outline">
             <mat-label>Data de entrega</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="dateEnd">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -35,7 +35,7 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field class="example-full-width" appearance="outline">
+          <mat-form-field class="example-full-width-dh" appearance="outline">
             <mat-label>Hora de entrega</mat-label>
             <input matInput type="time" name="hourEnd" placeholder="Hora de entrega" formControlName="hourEnd">
           </mat-form-field>
@@ -45,17 +45,17 @@
 
     <table>
       <tr>
-        <td>
-          <button mat-raised-button routerLink='/list'>
+        <td class="pr">
+          <button mat-raised-button routerLink='/list' class="button">
             Voltar
           </button>
         </td>
         <td *ngIf="taskId; else blocoCriar">
-          <button mat-raised-button type="submit" [disabled]="!formToDo.valid">Editar</button>
+          <button mat-raised-button type="submit" [disabled]="!formToDo.valid || formToDo.untouched" class="button submit" (click)="openDialog('editado')">Editar</button>
         </td>
         <ng-template #blocoCriar>
           <td>
-            <button mat-raised-button type="submit" [disabled]="!formToDo.valid">Adicionar</button>
+            <button mat-raised-button type="submit" [disabled]="!formToDo.valid" class="button submit" (click)="openDialog('adicionado')">Adicionar</button>
           </td>
         </ng-template>
       </tr>
