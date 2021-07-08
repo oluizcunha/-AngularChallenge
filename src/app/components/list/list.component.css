@@ -20,6 +20,31 @@ mat-header-cell, mat-cell {
 
 .add-button {
   margin-top: 20px;
-  margin-left: auto;
-  margin-right: 10px;
+  margin-left: 13%;
+}
+
+.edit-button {
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+
+.add-button:hover {
+  background-color: rgb(255,223,228);
+  font-weight: bold;
+}
+
+.edit-button:hover {
+  /* box-shadow: 2px 2px 2px 2px rgb(255,223,228); */
+  background-color: rgb(66, 66, 230);
+  color: white;
+}
+
+.delete-button:hover {
+  /* box-shadow: 2px 2px 2px 2px rgb(255,223,228); */
+  background-color: rgb(255, 46, 46);
+  color: white;
+}
+
+.td-button {
+  padding-right: 2px !important;
 }

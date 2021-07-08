@@ -50,9 +50,14 @@
             Voltar
           </button>
         </td>
-        <td>
-          <button mat-raised-button type="submit" [disabled]="!formToDo.valid">Submit</button>
+        <td *ngIf="taskId; else blocoCriar">
+          <button mat-raised-button type="submit" [disabled]="!formToDo.valid">Editar</button>
         </td>
+        <ng-template #blocoCriar>
+          <td>
+            <button mat-raised-button type="submit" [disabled]="!formToDo.valid">Adicionar</button>
+          </td>
+        </ng-template>
       </tr>
     </table>
   </form>

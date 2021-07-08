@@ -4,12 +4,59 @@
     justify-content: center;
   }
 
+  .container2 {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   img {
     width: 15%;
     border: 2px solid rgb(253,78,134);
     border-radius: 20%;
     margin-right: 80px;
+    opacity: 1;
+    display: block;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
 
 }
 
 
+.luiz:hover  {
+    opacity: 0.3;
+    display: block;
+    color: red;
+}
+
+.bia:hover {
+    opacity: 0.3;
+}
+
+.emmanuel:hover {
+    opacity: 0.3;
+}
+
+
+
+
+  .img__description {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(29, 106, 154, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+  }
+
+  .luiz:hover .img__description {
+    visibility: visible;
+    opacity: 1;
+  }
