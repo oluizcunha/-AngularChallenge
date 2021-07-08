@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Todo } from 'src/app/model/todo';
@@ -33,8 +39,7 @@ export class ListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true })
   paginatorToDo!: MatPaginator;
-
-  // @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+  @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
 
   paginatorDone!: MatPaginator;
   @ViewChild(MatSort, { static: true })
@@ -43,12 +48,15 @@ export class ListComponent implements OnInit {
 
   constructor(private service: TodoService, public dialog: MatDialog) {}
 
+  ngAfterViewInit(): void {
+    this.dataSourceToDo.paginator = this.paginator.toArray()[0];
+    this.dataSourceToDo.sort = this.sortToDo;
+    this.dataSourceDone.paginator = this.paginator.toArray()[1];
+    this.dataSourceDone.sort = this.sortDone;
+  }
+
   ngOnInit(): void {
     this.getToDos();
-    this.dataSourceToDo.paginator = this.paginatorToDo;
-    this.dataSourceToDo.sort = this.sortToDo;
-    this.dataSourceDone.paginator = this.paginatorDone;
-    this.dataSourceDone.sort = this.sortDone;
   }
 
   getToDos() {

@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -76,6 +77,7 @@ import { ConfirmModalComponent } from './components/details/confirm-modal/confir
     MatExpansionModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatCardModule,
   ],
 
   providers: [
@@ -84,7 +86,7 @@ import { ConfirmModalComponent } from './components/details/confirm-modal/confir
     MatNativeDateModule,
     MatPaginatorIntl,
     MatPaginatorIntlCro,
-    // { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
   ],
 
   bootstrap: [AppComponent],

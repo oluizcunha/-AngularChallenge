@@ -59,19 +59,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </td>
-        <td class="pr">
-          <mat-form-field class="example-full-width-dh" appearance="outline">
-            <mat-label>Hora de entrega</mat-label>
-            <input
-              matInput
-              type="time"
-              name="hourEnd"
-              placeholder="Hora de entrega"
-              formControlName="hourEnd"
-            />
-          </mat-form-field>
-        </td>
-        <td>
+        <td [class.pr]="getStatus()">
           <mat-form-field class="example-full-width-dh" appearance="outline">
             <mat-label>Status</mat-label>
             <mat-select formControlName="status" required>
@@ -79,6 +67,21 @@
                 {{ st }}
               </mat-option>
             </mat-select>
+          </mat-form-field>
+        </td>
+        <td *ngIf="getStatus()">
+          <mat-form-field class="example-full-width-dh" appearance="outline">
+            <mat-label>Data de conclusão</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="dateEnd"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </td>
       </tr>

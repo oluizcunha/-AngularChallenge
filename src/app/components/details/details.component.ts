@@ -87,4 +87,8 @@ export class DetailsComponent implements OnInit {
       data: { type: type },
     });
   }
+
+  getStatus() {
+    return this.formToDo.get('status')?.value == 'Concluído';
+  }
 }
