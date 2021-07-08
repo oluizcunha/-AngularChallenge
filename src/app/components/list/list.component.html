@@ -50,7 +50,9 @@
       <!-- Phone Column -->
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef>Telefone</th>
-        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.phone | mask: "(00) 0000-0000" }}
+        </td>
       </ng-container>
 
       <!-- Email Column -->
@@ -129,7 +131,8 @@
           Data de Entrega
         </th>
         <td mat-cell *matCellDef="let element">
-          {{ element.dateEnd | date: "dd/MM/yyyy" }}
+          <!-- {{ element.dateEnd | date: "dd/MM/yyyy" }} -->
+          {{ element.dateEnd }}
         </td>
       </ng-container>
 
@@ -144,7 +147,9 @@
       <!-- Phone Column -->
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef>Telefone</th>
-        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.phone | mask: "(00) 0000-0000" }}
+        </td>
       </ng-container>
 
       <!-- Email Column -->

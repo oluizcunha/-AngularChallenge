@@ -6,25 +6,37 @@
   border-radius: 50%;
 }
 
-.container {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.luiz {
+  margin-left: 60vh;
+}
+.bia {
+  margin-left: 10vh;
+}
+.emmanuel {
+  margin-left: 10vh;
 }
 
-.luiz:hover {
-  opacity: 0.3;
-  cursor: pointer;
+.contacts {
+  margin-left: 68vh;
+}
+.wpp-luiz,
+.wpp-bia,
+.wpp-emmanuel {
+  width: 3%;
 }
 
-.bia:hover {
-  opacity: 0.3;
-  cursor: pointer;
+.gmail-luiz,
+.gmail-bia,
+.gmail-emmanuel {
+  width: 3%;
 }
 
-.emmanuel:hover {
-  opacity: 0.3;
-  cursor: pointer;
+.wpp-bia {
+  margin-left: 27vh;
+}
+
+.wpp-emmanuel {
+  margin-left: 26vh;
 }
 
 .img__description {

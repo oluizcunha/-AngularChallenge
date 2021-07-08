@@ -84,7 +84,7 @@ import { ConfirmModalComponent } from './components/details/confirm-modal/confir
     MatNativeDateModule,
     MatPaginatorIntl,
     MatPaginatorIntlCro,
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
+    // { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
   ],
 
   bootstrap: [AppComponent],

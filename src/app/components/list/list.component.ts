@@ -33,6 +33,9 @@ export class ListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true })
   paginatorToDo!: MatPaginator;
+
+  // @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+
   paginatorDone!: MatPaginator;
   @ViewChild(MatSort, { static: true })
   sortToDo!: MatSort;
