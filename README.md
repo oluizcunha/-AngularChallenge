@@ -23,7 +23,6 @@ O projeto foi desenvolvido utilizando as bases:
 - Angular
 - Css 3
 - Angular Material
-- 
 
 ## 💻 Paginas criadas
 
@@ -34,9 +33,9 @@ O projeto foi desenvolvido utilizando as bases:
 - details/create
 - 404: Not Found
 
-## 🚀 Instalando <nome_do_projeto>
+## 🚀 Instalando easyTask
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
+Para instalar o easyTask, siga estas etapas:
 
 Instalar:
 ```
